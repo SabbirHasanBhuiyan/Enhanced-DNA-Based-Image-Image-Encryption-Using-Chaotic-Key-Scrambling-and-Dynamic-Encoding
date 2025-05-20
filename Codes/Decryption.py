@@ -408,16 +408,8 @@ def main():
     cipherImage= encryption(scrambled_key, image_path)
     plt.imshow(cipherImage)
     Image.fromarray(cipherImage).save('/home/decrypt_image.jpeg')
-    plt.show()
 
-    original_1d=image_array.flatten()
-    plt.hist(original_1d, bins=256)
-    plt.show()
 
-    cipherImage_1d = cipherImage.flatten()
-    print("Entropy of New Algorithm:", calculate_entropy(cipherImage_1d))
-    plt.hist(cipherImage_1d, bins=256)
-    plt.show()
 
     # Compute histogram using NumPy
     #hist, bins = np.histogram(cipherImage.ravel(), bins=256, range=[0,256])
