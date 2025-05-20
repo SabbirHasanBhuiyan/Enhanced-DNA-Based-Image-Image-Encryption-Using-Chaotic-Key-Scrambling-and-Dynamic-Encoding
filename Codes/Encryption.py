@@ -278,6 +278,7 @@ def encryption(ScrambleKeyBits, image_path):
     #processed_image = np.copy(image)
     height, width, channels = image_array.shape
     processed_image = np.zeros(shape=(height,width,channels), dtype=np.uint8)
+    processed_image = np.copy(image)
 
     index = 0
     for i in range(height):
@@ -286,7 +287,7 @@ def encryption(ScrambleKeyBits, image_path):
                 if index < len(ScrambleKeyBits):
                     key_segment = ScrambleKeyBits[index*8:(index+1)*8]
                     key_segment = ''.join(key_segment)
-                    original_value = processed_image[i, j, k]
+                    original_value = image_array[i, j, k]
                     original_bin = format(original_value, '08b')
 
                     key_dna=DNAEncode(key_segment )
@@ -306,7 +307,7 @@ def encryption(ScrambleKeyBits, image_path):
 
 def main():
 
-    image_path = '/home/Lena512.jpeg'
+    image_path = '/home/Lena512.jpg'
     image = Image.open(image_path)
     image_array = np.array(image)
 
